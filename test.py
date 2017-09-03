@@ -12,12 +12,20 @@
 """
 import bayes
 
+
 def run():
     print 'begin--->run()'
-    postingList,classVec = bayes.loadDataSet()
+    postingList, classVec = bayes.loadDataSet()
     myVocabList = bayes.createVocabList(postingList)
-    print myVocabList
-    print bayes.words2Vec(myVocabList,postingList[0])
+    # print myVocabList
+    # print bayes.words2Vec(myVocabList,postingList[0])
+    trainMat = []
+    for postinDoc in postingList:
+        trainMat.append(bayes.words2Vec(myVocabList, postinDoc))
+    p0V, p1V, pAb = bayes.trainNB0(trainMat, classVec)
+    print pAb
+    print p0V
+    print p1V
 
 
 if __name__ == '__main__':

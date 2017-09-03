@@ -23,9 +23,10 @@ def run():
     for postinDoc in postingList:
         trainMat.append(bayes.words2Vec(myVocabList, postinDoc))
     p0V, p1V, pAb = bayes.trainNB0(trainMat, classVec)
-    print pAb
-    print p0V
-    print p1V
+    bayes.testingNB()
+    # print pAb
+    # print p0V
+    # print p1V
 
 
 if __name__ == '__main__':
